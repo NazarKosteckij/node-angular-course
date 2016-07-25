@@ -2,10 +2,10 @@
 <div class="row">
     <ng-pluralize count="remoteData.data.length"
                   when="{'0': 'Nobody is presented.',
-                         '1': 'We have only 1 person in the list.',
+                         '1': 'We have only one person in the list.',
                          'other': 'We have {{remoteData.data.length}} persons.'}">
     </ng-pluralize>
-    <a class="right btn waves-effect waves-light green">Add new</a>
+    <a class="right btn waves-effect waves-light green btn modal-trigger" ng-click="showMdoal()">Add new</a>
 </div>
 <div class="row">
     <div class="col s12">
@@ -19,5 +19,43 @@
             </li>
         </ul>
     </div>
+</div>
+
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Add new person</h4>
+        <div class="row">
+            <div class="col s8">
+                {{person.firstName}} {{person.lastName}} - {{person.email}}
+            </div>
+        </div>
+        <div class="row">
+            <form class="col s12" novalidate ng-submit="addPerson()">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input ng-model="person.firstName" id="firstName" type="text" class="validate">
+                        <label for="firstName">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input ng-model="person.lastName" id="lastName" type="text" class="validate">
+                        <label for="lastName">Last Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input ng-model="person.email" id="email" type="email" class="validate">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <input type="submit" ng-disabled="person.email === ''" class="btn" value="add">
+            </form>
+        </div>
+
+    </div>
+    <!--<div class="modal-footer">-->
+        <!--<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>-->
+    <!--</div>-->
 </div>
 </div>

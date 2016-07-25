@@ -2,6 +2,7 @@
 
 angular.module('myApp.persons', ['ngRoute'])
 
+
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/persons', {
     templateUrl: 'persons/persons.html',
@@ -10,14 +11,23 @@ angular.module('myApp.persons', ['ngRoute'])
 }])
 
 .controller('PersonsCtrl', function($http, $scope) {
+
+  $scope.person = {
+    firstName:"",
+    lastName:"",
+    email:""
+  };
+
   function init() {
     $http.get("api/persons/").then(function(data){
       $scope.remoteData = data;
     });
   }
+
+
   function deletePerson(id) {
     $http.delete("api/persons/").then(function(){
-      Materialize.toast("Deleted");
+      Materialize.toast("Deleted", 3000);
       init();
     })
   }
@@ -28,6 +38,18 @@ angular.module('myApp.persons', ['ngRoute'])
     } else {
       deletePerson(id._id);
     }
+  }
+
+  $scope.addPerson = function () {
+    $('#modal1').closeModal();
+    $http.post("api/persons/", $scope.person).then(function(){
+      Materialize.toast("Created", 3000);
+      init();
+    })
+  }
+
+  $scope.showMdoal = function () {
+    $('#modal1').openModal();
   }
 
   init();
