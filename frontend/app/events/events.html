@@ -1,11 +1,43 @@
 <H3>Events</H3>
-<h6>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</h6>
+<!--<h6>-->
+  <!--Showing of 'interpolate' filter:-->
+  <!--{{ 'Current version is v%VERSION%.' | interpolate }}-->
+<!--</h6>-->
+
+<a ng-click="openModal()" class="right waves-effect waves-light btn modal-trigger">add event</a>
 
 <div class="section">
   <div class="row">
-
+    <div class="col s12">
+      <ul class="collection">
+        <li ng-click="viewEvent(event)" class="collection-item" ng-repeat="event in events">{{event.name}}: {{event.time}} {{event.date}}</li>
+      </ul>
+    </div>
   </div>
+</div>
+
+<!--add event modal-->
+<div id="add-event-modal" class="modal">
+  <div class="modal-content">
+    <h4>Add event</h4>
+    <div class="row">
+      <form class="col s12" novalidate ng-submit="addEvent()">
+        <div class="row">
+          <div class="input-field col s6">
+            <input ng-model="event.name" id="name" type="text" class="validate">
+            <label for="name">Title</label>
+          </div>
+          <div class="input-field col s6">
+            <input ng-model="event.ovner" id="owner" type="text" class="validate">
+            <label for="owner">Owner</label>
+          </div>
+        </div>
+
+        <input type="submit" value="add" class="btn"/>
+      </form>
+    </div>
+  </div>
+  <!--<div class="modal-footer">-->
+    <!--<a class=" modal-action modal-close waves-effect waves-red btn-flat">Close</a>-->
+  <!--</div>-->
 </div>
