@@ -12,6 +12,11 @@ angular.module('myApp.events', ['ngRoute'])
 .controller('EventsCtrl', ["$scope", "$http", "EventsService", function($scope, $http, EventsService) {
   //$scope.events = [];
 
+
+
+  $scope.person = {firstName: "", lastName: ""};
+  $scope.persons = [];
+
   $scope.event = {
     name: "",
     date: "",

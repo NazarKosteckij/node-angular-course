@@ -46,7 +46,7 @@ angular.module('myApp.persons', ['ngRoute'])
     })
   };
 
-  $scope.showMdoal = function () {
+  $scope.showModal = function () {
     $('#modal1').openModal();
   };
 
