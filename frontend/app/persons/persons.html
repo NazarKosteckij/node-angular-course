@@ -13,7 +13,7 @@
             <li class="collection-item" ng-repeat="person in remoteData.data">
                 <div>
                     {{person.firstName}} {{person.lastName}} - <span class="grey-text"> {{person.email}}</span>
-                    <a ng-click="delete(person._id)" style="cursor: pointer" class="secondary-content"><i
+                    <a ng-click="delete(person)" style="cursor: pointer" class="secondary-content"><i
                             class="material-icons red-text">delete</i></a>
                 </div>
             </li>
