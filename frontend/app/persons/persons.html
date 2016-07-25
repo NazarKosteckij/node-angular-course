@@ -1,0 +1,23 @@
+<H1>Persons</H1>
+<div class="row">
+    <ng-pluralize count="remoteData.data.length"
+                  when="{'0': 'Nobody is presented.',
+                         '1': 'We have only 1 person in the list.',
+                         'other': 'We have {{remoteData.data.length}} persons.'}">
+    </ng-pluralize>
+    <a class="right btn waves-effect waves-light green">Add new</a>
+</div>
+<div class="row">
+    <div class="col s12">
+        <ul class="collection">
+            <li class="collection-item" ng-repeat="person in remoteData.data">
+                <div>
+                    {{person.firstName}} {{person.lastName}} - <span class="grey-text"> {{person.email}}</span>
+                    <a ng-click="delete(person._id)" style="cursor: pointer" class="secondary-content"><i
+                            class="material-icons red-text">delete</i></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>

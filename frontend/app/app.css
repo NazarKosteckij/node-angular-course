@@ -1,0 +1,14 @@
+/* app css stylesheet */
+
+html, body {
+    height: 100%;
+}
+
+main {
+    min-height: 90%;
+}
+
+main .container {
+    padding-top: 10px;
+    min-height: 45vh;
+}
