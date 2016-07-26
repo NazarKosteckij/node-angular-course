@@ -1,4 +1,9 @@
 <H1>Persons</H1>
+<div ng-repat="person in $ctrl.persons">
+    <person-chips person="person"></person-chips>
+</div>
+
+<person-chips-list persons="[{firstName:'ds', lastName:'asd'}, {firstName:'ds', lastName:'asd'}, {firstName:'ds', lastName:'asd'}]"></person-chips-list>
 <div class="row">
     <ng-pluralize count="remoteData.data.length"
                   when="{'0': 'Nobody is presented.',
