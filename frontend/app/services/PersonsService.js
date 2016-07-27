@@ -17,6 +17,7 @@ angular.module('myApp')
     return {
         add: _createPerson,
         getAll: _getAll,
-        delete: _deletePerson
+        delete: _deletePerson,
+        getFriends: _getAll
     }
 });

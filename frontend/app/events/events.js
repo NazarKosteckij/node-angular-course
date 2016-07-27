@@ -9,12 +9,11 @@ angular.module('myApp.events', ['ngRoute'])
   });
 }])
 
-.controller('EventsCtrl', ["$scope", "$http", "EventsService", function($scope, $http, EventsService) {
-  //$scope.events = [];
-
-
-
-  $scope.person = {firstName: "", lastName: ""};
+.controller('EventsCtrl', ["$scope", "$http", "EventsService", "PersonsService", function($scope, $http, EventsService, PersonsService) {
+  $scope.events = [];
+  $scope.invitedPersons = [];
+  
+  //$scope.person = {firstName: "", lastName: ""};
   $scope.persons = [];
 
   $scope.event = {
@@ -27,10 +26,12 @@ angular.module('myApp.events', ['ngRoute'])
 
   $scope.openModal = function() {
     $('#add-event-modal').openModal();
+    $('select').material_select();
   };
 
   $scope.addEvent = function() {
     $('#add-event-modal').closeModal();
+    $scope.event.participants = $scope.invitedPersons;
     EventsService.add($scope.event)
       .then(function() {
         Materialize.toast("Created", 3000);
@@ -39,10 +40,15 @@ angular.module('myApp.events', ['ngRoute'])
   };
 
   $scope.viewEvent = function(event) {
-
+     window.location.href ="#!events/" + event._id;
   };
 
   function _init() {
+    PersonsService.getFriends().then(function (data) {
+      $scope.avaliablePersons = data.data;
+      console.log(data);
+    });
+
     EventsService.getAll().then(function (data) {
       $scope.events = data.data;
       console.log(data);

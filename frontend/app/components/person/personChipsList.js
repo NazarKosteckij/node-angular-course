@@ -8,6 +8,6 @@ angular.module('myApp').component('personChipsList', {
     templateUrl: 'components/person/personChipsList.html',
     controller: PersonChipsList,
     bindings: {
-        persons: '<'
+        persons: '='
     }
 });

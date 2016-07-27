@@ -10,7 +10,12 @@
   <div class="row">
     <div class="col s12">
       <ul class="collection">
-        <li ng-click="viewEvent(event)" class="collection-item" ng-repeat="event in events">{{event.name}}: {{event.date | date : "dd/MM/yyyy"}} participants - {{event.participants.length}}</li>
+        <li ng-click="viewEvent(event)" class="collection-item" ng-repeat="event in events">
+          <div class="col s6 m2">{{event.name}}: </div>
+          <span class="col m2 ">{{event.date | date : "dd/MM/yyyy"}} </span>
+          <span class="hide-on-med-and-down" >participants - {{event.participants.length}}</span>
+        <div class="hide-on-med-and-down right"><person-chips person="event.ovner"></person-chips></div>
+        </li>
       </ul>
     </div>
   </div>
@@ -41,6 +46,14 @@
             <input ng-model="event.time" id="time" type="time" class="validate">
             <label for="time">Time</label>
           </div>
+        </div>
+
+        <div class="input-field col s12">
+          <select multiple ng-model="invitedPersons">
+            <option value="" disabled selected>Choose your option</option>
+            <option ng-repeat="person in avaliablePersons" ng-value="person" >{{person.firstName}} {{person.lastName}}</option>
+          </select>
+          <label>Materialize Multiple Select</label>
         </div>
 
         <input type="submit" value="add" class="btn"/>

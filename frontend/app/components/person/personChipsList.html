@@ -1,4 +1,7 @@
 {{$ctrl.persons.length}}
-<div ng-repat="person in $ctrl.persons">
-    <person-chips person="person"></person-chips>
-</div>
+<ul>
+    <li ng-repat="currentPerson in $ctrl.persons">
+        <person-chips person="currentPerson"></person-chips>
+    </li>
+</ul>
+

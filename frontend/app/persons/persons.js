@@ -17,6 +17,8 @@ angular.module('myApp.persons', ['ngRoute'])
     email:""
   };
 
+  $scope.persons = [{firstName:'ds', lastName:'asd'}, {firstName:'ds', lastName:'asd'}, {firstName:'ds', lastName:'asd'}];
+
   function init() {
     PersonsService.getAll().then(function(data){
       $scope.remoteData = data;
