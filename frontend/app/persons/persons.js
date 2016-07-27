@@ -9,7 +9,7 @@ angular.module('myApp.persons', ['ngRoute'])
   });
 }])
 
-.controller('PersonsCtrl', ['$http', '$scope','PersonsService',function($http, $scope, PersonsService) {
+.controller('PersonsCtrl', ['$scope','PersonsService', function($scope, PersonsService) {
 
   $scope.person = {
     firstName:"",

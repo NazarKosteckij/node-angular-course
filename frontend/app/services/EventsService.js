@@ -11,8 +11,13 @@ angular.module('myApp')
         return $http.get("api/events/");
     }
 
+    function _get(id) {
+        return $http.get("api/events/" + id);
+    }
+
     return {
         add: _addEvent,
-        getAll: _getAll
+        getAll: _getAll,
+        getById: _get
     }
 }]);
